@@ -7,6 +7,7 @@ interface PlayerControlsProps {
     onPlayPause: () => void;
     onNext: () => void;
     onPrevious: () => void;
+    testID?: string;
 }
 
 export const PlayerControls: React.FC<PlayerControlsProps> = ({
@@ -14,16 +15,29 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
                                                                   onPlayPause,
                                                                   onNext,
                                                                   onPrevious,
+                                                                  testID = 'player-controls'
                                                               }) => {
     return (
-        <View style={styles.controls}>
-            <TouchableOpacity onPress={onPrevious}>
-                <Icon name="controller-fast-backward"  style={styles.button} />
+        <View style={styles.controls} testID={testID}>
+            <TouchableOpacity
+                onPress={onPrevious}
+                testID={`${testID}-previous`}
+            >
+                <Icon name="controller-fast-backward" style={styles.button} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={onPlayPause}>
-                <Icon name={isPlaying ? 'controller-paus' : 'controller-play'}  style={styles.button} />
+            <TouchableOpacity
+                onPress={onPlayPause}
+                testID={`${testID}-${isPlaying ? 'pause' : 'play'}`}
+            >
+                <Icon
+                    name={isPlaying ? 'controller-paus' : 'controller-play'}
+                    style={styles.button}
+                />
             </TouchableOpacity>
-            <TouchableOpacity onPress={onNext}>
+            <TouchableOpacity
+                onPress={onNext}
+                testID={`${testID}-next`}
+            >
                 <Icon name="controller-fast-forward" style={styles.button} />
             </TouchableOpacity>
         </View>
@@ -35,7 +49,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding:0,
+        padding: 0,
     },
     button: {
         color: '#fff',

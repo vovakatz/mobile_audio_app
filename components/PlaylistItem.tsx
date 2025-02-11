@@ -6,17 +6,19 @@ interface PlaylistItemProps {
     track: Track;
     isPlaying: boolean;
     onPress: () => void;
+    testID?: string;
 }
 
 export const PlaylistItem: React.FC<PlaylistItemProps> = ({
                                                               track,
                                                               isPlaying,
                                                               onPress,
+                                                              testID,
                                                           }) => {
     return (
         <TouchableOpacity
             style={[styles.playlistItem, isPlaying && styles.playingItem]}
-            onPress={onPress}
+            onPress={onPress} testID={testID}
         >
             <View style={styles.trackInfo}>
                 <Text style={styles.title}>{track.title}</Text>

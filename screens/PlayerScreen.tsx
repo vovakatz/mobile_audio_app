@@ -58,17 +58,28 @@ export const PlayerScreen: React.FC = () => {
     return (
         <View style={styles.container}>
             <View style={styles.nowPlaying}>
-                <Image style={styles.artwork} source={{ uri: tracks[currentTrack].artwork }} />
-                <Text style={styles.nowPlayingTitle}>
+                <Image
+                    style={styles.artwork}
+                    source={{ uri: tracks[currentTrack].artwork }}
+                    testID="now-playing-artwork"
+                />
+                <Text
+                    style={styles.nowPlayingTitle}
+                    testID="now-playing-title"
+                >
                     {tracks[currentTrack].title}
                 </Text>
-                <Text style={styles.nowPlayingArtist}>
+                <Text
+                    style={styles.nowPlayingArtist}
+                    testID="now-playing-artist"
+                >
                     {tracks[currentTrack].artist}
                 </Text>
 
                 <Progress />
 
                 <PlayerControls
+                    testID="player-controls"
                     isPlaying={isPlaying}
                     onPlayPause={handlePlayPause}
                     onNext={handleNext}
@@ -80,6 +91,7 @@ export const PlayerScreen: React.FC = () => {
                 {tracks.map((track, index) => (
                     <PlaylistItem
                         key={track.id}
+                        testID="playlist-item"
                         track={track}
                         isPlaying={currentTrack === index && isPlaying}
                         onPress={() => handleTrackSelect(index)}
