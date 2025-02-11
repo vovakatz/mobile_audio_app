@@ -66,7 +66,12 @@ This is one way to run your app — you can also build it directly from Android 
 
 If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
 
-# Specific issues
+# Testing
+
+`yarn test` will run locl tests.  This is not a complete test coverage, 
+but demonstrates how to approach testing in this application.
+
+# Specific issues / Comments
 - For Android, the latest version of `react-native-track-player` is not fully compatible with the latest `react-native`.
 It is not clearly described in the library readme.  In order to make the latest versions work together
 make sure you set `newArchEnabled=false` in `android/gradle.properties`.
